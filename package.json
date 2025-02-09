@@ -1,0 +1,15 @@
+{
+  "name": "lms",
+  "version": "1.0.0",
+  "description": "email =abhi1@gmail.com\r pass = Abhi@123\r user =abhi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "create-react-app": "^5.0.1"
+  }
+}
