@@ -3,44 +3,43 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import ScheduleIcon from '@mui/icons-material/Schedule';
 import ListItemText from '@mui/material/ListItemText';
-// import InboxIcon from '@mui/material/MoveToInbox';
-// import MailIcon from '@mui/material/Mail';
-
+import HomeIcon from '@mui/icons-material/Home';
+import ClassIcon from '@mui/icons-material/Class';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
+import { useNavigate } from 'react-router-dom';
+import { IconButton } from '@mui/material';
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
+  };
+
+  const handleNavigation = (path) => () => {
+    navigate(path);
+    setOpen(false);
   };
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        {[
+          { text: 'DashBoard', path: '/',icon:<HomeIcon /> },
+          { text: 'Classes', path: '/starred',icon:<ClassIcon /> },
+          { text: 'Schedule', path: '/send-email',icon:<ScheduleIcon /> },
+          { text: 'Attendance', path: '/drafts',icon:<CoPresentIcon /> },
+        ].map((item, index) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton onClick={handleNavigation(item.path)}>
               <ListItemIcon>
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                {item.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -50,7 +49,10 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>Open drawer</Button>
+      <Button onClick={toggleDrawer(true)} style={{top:"0"}}><IconButton>
+        <HomeIcon />
+        </IconButton> 
+        </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>

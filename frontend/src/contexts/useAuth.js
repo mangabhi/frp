@@ -24,7 +24,7 @@ export const AuthProvider = ({children})=>{
         const success =  await login(username,password);
         if(success){
             setIsAuthenticated(true);
-            nav('/');
+            nav('/dashboard');
         }
         
     }
