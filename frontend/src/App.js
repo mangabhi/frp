@@ -4,6 +4,7 @@ import Login from './routes/login';
 import Register from './routes/register';
 import  Menu  from './routes/menu';
 import {  AuthProvider } from './contexts/useAuth';
+import ClassManagement from './routes/ClassManagement';
 // import PrivateRoute from './components/private_route';
 
 
@@ -13,9 +14,10 @@ function App() {
       <AuthProvider>
       <Routes>
         {/* <Route path="/" element={<PrivateRoute><Menu/></PrivateRoute>} /> */}
-        <Route path="/" element={<Menu/>} />
+        <Route path="/dashboard" element={<Menu/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path='/classes' element={<ClassManagement/>} />
       </Routes>
       </AuthProvider>
     </Router>

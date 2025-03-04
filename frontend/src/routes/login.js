@@ -25,8 +25,8 @@ const Login = () => {
                 mx="auto"
                 mt={4}
             >
-                <Typography variant="h3" color="textPrimary" gutterBottom alignItems={'center'}>
-                    Login
+                <Typography variant="h3" color="textPrimary" gutterBottom alignItems={'center'} > 
+                    LMS
                 </Typography>
                 <Box mb={2} width="100%">
                     <TextField
