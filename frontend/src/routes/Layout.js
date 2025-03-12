@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-import { get_notes, logout } from "../endpoints/api";
+import { logout } from "../endpoints/api";
 import {
   Home,
   ClassOutlined,
@@ -66,25 +66,25 @@ const Layout = ({ children }) => {
         <Typography variant="h6">Username</Typography>
       </Box>
       <List>
-        <ListItem button onClick={() => navigate("/dashboard")}>
+        <ListItem button onClick={() => navigate("/dashboard")} sx={{ cursor: 'pointer' }}>
           <IconButton>
             <Home />
           </IconButton>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button onClick={() => navigate("/classes")}>
+        <ListItem button onClick={() => navigate("/classes")} sx={{ cursor: 'pointer' }}>
           <IconButton>
             <ClassOutlined />
           </IconButton>
           <ListItemText primary="Classes" />
         </ListItem>
-        <ListItem button onClick={() => navigate("/dashboard")}>
+        <ListItem button onClick={() => navigate("/dashboard")} sx={{ cursor: 'pointer' }}>
           <IconButton>
             <TodayOutlined />
           </IconButton>
           <ListItemText primary="Schedule" />
         </ListItem>
-        <ListItem button onClick={() => navigate("/dashboard")}>
+        <ListItem button onClick={() => navigate("/dashboard")} sx={{ cursor: 'pointer' }}>
           <IconButton>
             <ImportContactsOutlined />
           </IconButton>

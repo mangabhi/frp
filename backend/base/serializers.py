@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import Note
+from .models import PostClass
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -30,3 +31,14 @@ class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
         fields = ['id', 'description']
+
+class ClassSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostClass
+        fields = ['title', 'created_at']
+        read_only_fields = ['owner']
+
+class GetClassSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostClass
+        fields = '__all__'

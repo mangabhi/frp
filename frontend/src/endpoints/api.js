@@ -8,6 +8,8 @@ const REFRESH_URL = `${BASE_URL}token/refresh/`
 const LOGOUT_URL = `${BASE_URL}logout/`
 const NOTES_URL = `${BASE_URL}notes/`
 const AUTH_URL = `${BASE_URL}authenticated/`
+const POST_CLASS_URL = `${BASE_URL}create-class/`
+const GET_CLASS_URL = `${BASE_URL}classes/`
 
 axios.defaults.withCredentials = true; 
 
@@ -46,6 +48,29 @@ export const register = async (username, email, password) => {
     return response.data;
 };
 
+export const post_class = async (title, created_at) => {
+    try {
+        const response = await axios.post(
+            POST_CLASS_URL, 
+            { title, created_at },  
+            { withCredentials: true }
+        );
+        return response.data.success
+    } catch (error) {
+        console.error("Post class failed:", error);
+        return false;  // Return false or handle the error as needed
+    }
+}
+export const get_classes = async () => {
+    try{
+        const response = await axios.get(GET_CLASS_URL, { withCredentials: true });
+        return response.data;
+    }
+    catch(error){
+        console.error("Get classes failed:", error);
+        return call_refresh(error,axios.get(GET_CLASS_URL, { withCredentials: true }));
+    }
+}
 export const call_refresh = async (error,func) => {
     if(error.response && error.response.status === 401){
        const tokenRefreshed = await refresh_token();
@@ -70,7 +95,7 @@ export const logout =async()=>{
 
 export const is_authenticated =async()=>{
     try {
-        await axios.post(AUTH_URL, {},{ withCredentials: true });
+        await axios.get(AUTH_URL, {},{ withCredentials: true });
         return true;
     }
     catch(error){

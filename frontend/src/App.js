@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Routes,Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes,Route, Navigate} from 'react-router-dom';
 import Login from './routes/login';
 import Register from './routes/register';
 import  Menu  from './routes/menu';
@@ -14,6 +14,7 @@ function App() {
       <AuthProvider>
       <Routes>
         {/* <Route path="/" element={<PrivateRoute><Menu/></PrivateRoute>} /> */}
+        <Route path="/" element={<Navigate to="/login"/>} />
         <Route path="/dashboard" element={<Menu/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
